@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Db.Entities
+namespace Core.Dtos
 {
-    public abstract class BaseEntity
+    public abstract class BaseDto
     {
-        [Key]
         public long Id { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset UpdateddAt { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Core.Db.Entities;
+using Core.Dtos.user;
 using Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,14 +10,14 @@ namespace API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUser _userService;
-        public UserController(IUser userService)
+        private readonly IUserServices _userService;
+        public UserController(IUserServices userService)
         {
             _userService = userService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<UserEntity>> getAll()
+        public async Task<IEnumerable<GetUserDto>?> getAll()
         {
             return await _userService.GetAll();
         }

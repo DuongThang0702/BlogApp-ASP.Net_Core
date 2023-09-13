@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations;
+
 namespace Core.Db.Entities
 {
     public class UserEntity : BaseEntity
     {
-        public string LastName { get; set; } = default!;
-        public string FirstName { get; set; } = default!;
-        public string Email { get; set; } = default!;
-        public string Password { get; set; } = default!;
-        public string Avatar { get; set; } = default!;
+        public string LastName { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Avatar { get; set; } = string.Empty;
     }
 
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>

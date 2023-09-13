@@ -76,3 +76,5 @@ D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore
 D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\System.CodeDom.dll
+D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\AutoMapper.dll
+D:\project_aspnet\BlogApp\src\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
