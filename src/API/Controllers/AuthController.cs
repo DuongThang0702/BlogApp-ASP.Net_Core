@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Core.Db.Entities;
-using Core.Dtos.auth;
+using Core.Dtos;
 using Core.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -11,37 +12,21 @@ namespace API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthServices _authservices;
-        private readonly IUserServices _userservices;
-        private readonly IMapper _mapper;
-
-        public AuthController(IAuthServices authservices, IUserServices userservices, IMapper mapper)
+        private readonly IAuthServices _authServices;
+        public AuthController(IAuthServices authServices)
         {
-            _authservices = authservices;
-            _userservices = userservices;
-            _mapper = mapper;
+            _authServices = authServices;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register([FromBody] RegisterDto Payload)
-        {
-            if (Payload == null)
+        public async Task<IActionResult> Register([FromBody] RegisterDto payload) {
+            if (payload == null)
             {
                 return BadRequest();
             }
-            var user = await _userservices.FindOneByEmail(Payload.Email);
-            if (user != null)
-            {
-                return BadRequest("Email has exsited!");
-            }
-            var response = await _authservices.Register(Payload);
-            return response == 1 ? Ok(new { Message = "Register Successfully" }) : BadRequest("Something went wrong!");
-        }
+            var response = await _authServices.Register(payload);
 
-        [HttpPost]
-        public async Task<ActionResult> Login()
-        {
-            return Ok();
+            return response.Succeeded ?  Ok(response) : Unauthorized();
         }
     }
 }
